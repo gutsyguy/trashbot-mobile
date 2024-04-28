@@ -2,8 +2,8 @@ import React from "react";
 // import { ResizeMode, Video } from "expo-av";
 // import Video from "react-native-video";
 import { Button, StyleSheet, View } from "react-native";
-import PlayerView from "react-native-aws-ivs-player-view";
-// import IVSPlayer from "amazon-ivs-react-native-player";
+// import PlayerView from "react-native-aws-ivs-player-view";
+import IVSPlayer from "amazon-ivs-react-native-player";
 
 const VideoPlayer = () => {
   const apiUrl = "http://127.0.0.1:5000/api";
@@ -31,52 +31,14 @@ const VideoPlayer = () => {
 
   return (
     <View style={styles.container}>
-      {/* <Video
-        source={{ uri: ivsPlayBackUrl }}
-        ref={(ref) => {
-          // @ts-ignore
-          this.player = ref;
-        }}
-        // @ts-ignore
-        onBuffer={this.onBuffer}
+      <IVSPlayer
         style={styles.backgroundVideo}
-        // @ts-ignore
-        onError={(error: any) => {
-          console.log("Video error:", error);
-          if (error.error) {
-            console.log("Detailed error:", error.error);
-          }
-        }}
-        // onLoad={(load) => console.log("Video loaded:", load)}
-      /> */}
-      {/* <IVSPlayer streamUrl={ivsPlayBackUrl} />; */}
-      <PlayerView
-        style={styles.backgroundVideo}
-        ref={(e: any) => {
-          // @ts-ignore
-          this.player = e;
-        }}
-        maxBufferTimeSeconds={0}
-        rebufferToLive={false}
+        streamUrl={ivsPlayBackUrl ? ivsPlayBackUrl : "e"}
       />
-      <Button
-        onPress={() => {
-          // @ts-ignore
-          this.player.pause();
-        }}
-        title="Pause"
-      />
-      <Button
-        onPress={() => {
-          // @ts-ignore
-          this.player.load(ivsPlayBackUrl);
-        }}
-        title="Play Me"
-      />
-      {/* <View style={[{ flexDirection: "row", backgroundColor: "black" }]}>
+      <View style={[{ flexDirection: "row", backgroundColor: "black" }]}>
         <Button title="Start" onPress={StartVideo} />
         <Button title="Stop" onPress={StopVideo} />
-      </View> */}
+      </View>
     </View>
   );
 };
@@ -87,8 +49,8 @@ const styles = StyleSheet.create({
     justifyContent: "center",
   },
   backgroundVideo: {
-    width: 50,
-    height: 50,
+    width: 500,
+    height: 500,
   },
 });
 

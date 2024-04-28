@@ -7,8 +7,6 @@ export default function App() {
   return (
     <View style={styles.container}>
       <VideoPlayer />
-      {/* <StatusBar style="auto" /> */}
-      {/* <Button title="Start" /> */}
     </View>
   );
 }
