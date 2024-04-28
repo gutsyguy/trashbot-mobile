@@ -1,13 +1,14 @@
 import { StatusBar } from "expo-status-bar";
-import { StyleSheet, Text, View } from "react-native";
+import { Button, StyleSheet, Text, View } from "react-native";
 import VideoPlayer from "./components/VideoPlayer";
+import StreamViewer from "./components/StreamViewer";
 
 export default function App() {
   return (
     <View style={styles.container}>
-      <Text>Open up App.tsx to start working on your app!</Text>
       <VideoPlayer />
       <StatusBar style="auto" />
+      {/* <Button title="Start" /> */}
     </View>
   );
 }

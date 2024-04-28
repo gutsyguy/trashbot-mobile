@@ -1,6 +1,7 @@
 import React from "react";
 import { ResizeMode, Video } from "expo-av";
 import { Button, StyleSheet, View } from "react-native";
+import PlayerView from "react-native-aws-ivs-player-view";
 
 const VideoPlayer = () => {
   const apiUrl = "http://127.0.0.1:5000/api";
@@ -52,6 +53,31 @@ const VideoPlayer = () => {
         }}
         onLoad={(load) => console.log("Video loaded:", load)}
       />
+
+      <PlayerView
+        style={styles.backgroundVideo}
+        ref={(e: any) => {
+          // @ts-ignore
+          this.player = e;
+        }}
+        maxBufferTimeSeconds={0}
+        rebufferToLive={false}
+      />
+      <Button
+        onPress={() => {
+          // @ts-ignore
+          this.player.pause();
+        }}
+        title="Pause"
+      />
+      <Button
+        onPress={() => {
+          // @ts-ignore
+          this.player.load("<SOME_HLS_URL>");
+        }}
+        title="Play Me"
+      />
+
       <View style={[{ flexDirection: "row", backgroundColor: "black" }]}>
         <Button title="Start" onPress={StartVideo} />
         <Button title="Stop" onPress={StopVideo} />
@@ -64,11 +90,10 @@ const styles = StyleSheet.create({
   container: {
     flex: 1,
     justifyContent: "center",
-    alignItems: "center",
   },
   backgroundVideo: {
-    width: "100%",
-    height: "100%",
+    width: 50,
+    height: 50,
   },
 });
 
