@@ -1,6 +1,6 @@
 import { StatusBar } from "expo-status-bar";
 import { StyleSheet, Text, View } from "react-native";
-import VideoPlayer from "./components/video";
+import VideoPlayer from "./components/VideoPlayer";
 
 export default function App() {
   return (
