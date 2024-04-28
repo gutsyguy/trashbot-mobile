@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 // import { ResizeMode, Video } from "expo-av";
 // import Video from "react-native-video";
 import { Button, StyleSheet, View } from "react-native";
@@ -6,6 +6,7 @@ import { Button, StyleSheet, View } from "react-native";
 import IVSPlayer from "amazon-ivs-react-native-player";
 
 const VideoPlayer = () => {
+  const [videoStarted, setVideoStarted] = useState(false);
   const apiUrl = "http://127.0.0.1:5000/api";
 
   const StartVideo = async () => {
@@ -15,6 +16,14 @@ const VideoPlayer = () => {
       .catch((error) => {
         console.error("Error:", error);
       });
+    // try {
+    //   const response = await fetch(apiUrl + "/start", { method: "POST" });
+    //   const data = await response.json();
+    //   console.log(data);
+    //   setVideoStarted(true);
+    // } catch (error) {
+    //   console.error("Error:", error);
+    // }
   };
 
   const StopVideo = async () => {
@@ -26,12 +35,18 @@ const VideoPlayer = () => {
       });
   };
 
+  // useEffect(() => {
+  //   StartVideo();
+  // }, []);
+
   const ivsPlayBackUrl =
     "https://2cace3ecd4fd.us-west-2.playback.live-video.net/api/video/v1/us-west-2.975050359366.channel.phP9AkCho9Eg.m3u8";
 
   return (
     <View style={styles.backgroundVideo}>
+      {/* {videoStarted && ( */}
       <IVSPlayer style={styles.backgroundVideo} streamUrl={ivsPlayBackUrl} />
+      {/* )} */}
       <View
         style={[
           {

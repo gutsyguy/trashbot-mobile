@@ -11,6 +11,7 @@
   "dependencies": {
     "@react-native/metro-config": "^0.74.81",
     "amazon-ivs-react-native-player": "^1.5.0",
+    "dotenv": "^16.4.5",
     "expo": "~50.0.14",
     "expo-av": "~13.10.6",
     "expo-dev-client": "~3.3.11",
@@ -18,6 +19,8 @@
     "react": "18.2.0",
     "react-native": "0.73.6",
     "react-native-aws-ivs-player-view": "^0.2.8",
+    "react-native-ble-manager": "^11.5.2",
+    "react-native-bluetooth-classic": "^1.73.0-rc.8",
     "react-native-video": "^5.2.1",
     "react-native-webview": "^13.8.6"
   },
