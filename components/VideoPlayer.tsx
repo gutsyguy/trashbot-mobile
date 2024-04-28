@@ -30,12 +30,17 @@ const VideoPlayer = () => {
     "https://2cace3ecd4fd.us-west-2.playback.live-video.net/api/video/v1/us-west-2.975050359366.channel.phP9AkCho9Eg.m3u8";
 
   return (
-    <View style={styles.container}>
-      <IVSPlayer
-        style={styles.backgroundVideo}
-        streamUrl={ivsPlayBackUrl ? ivsPlayBackUrl : "e"}
-      />
-      <View style={[{ flexDirection: "row", backgroundColor: "black" }]}>
+    <View style={styles.backgroundVideo}>
+      <IVSPlayer style={styles.backgroundVideo} streamUrl={ivsPlayBackUrl} />
+      <View
+        style={[
+          {
+            flexDirection: "row",
+            justifyContent: "center",
+            backgroundColor: "black",
+          },
+        ]}
+      >
         <Button title="Start" onPress={StartVideo} />
         <Button title="Stop" onPress={StopVideo} />
       </View>
@@ -49,8 +54,8 @@ const styles = StyleSheet.create({
     justifyContent: "center",
   },
   backgroundVideo: {
-    width: 500,
-    height: 500,
+    width: 300,
+    height: 300,
   },
 });
 
