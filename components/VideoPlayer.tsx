@@ -1,7 +1,9 @@
 import React from "react";
-import { ResizeMode, Video } from "expo-av";
+// import { ResizeMode, Video } from "expo-av";
+// import Video from "react-native-video";
 import { Button, StyleSheet, View } from "react-native";
 import PlayerView from "react-native-aws-ivs-player-view";
+// import IVSPlayer from "amazon-ivs-react-native-player";
 
 const VideoPlayer = () => {
   const apiUrl = "http://127.0.0.1:5000/api";
@@ -29,31 +31,25 @@ const VideoPlayer = () => {
 
   return (
     <View style={styles.container}>
-      <Video
+      {/* <Video
         source={{ uri: ivsPlayBackUrl }}
-        rate={1.0}
-        volume={1.0}
-        isMuted={false}
-        resizeMode={ResizeMode.CONTAIN}
-        shouldPlay
-        isLooping
-        useNativeControls
-        // bufferConfig={{
-        //   minBufferMs: 15000,      // Minimum amount of content that the player will attempt to buffer before playing
-        //   maxBufferMs: 50000,      // Maximum amount of content that the player will buffer
-        //   bufferForPlaybackMs: 2500,  // Amount of content that must be buffered for playback to start or resume following a user action
-        //   bufferForPlaybackAfterRebufferMs: 5000,  // Amount of content that must be buffered for playback to resume after a rebuffer
-        // }}
+        ref={(ref) => {
+          // @ts-ignore
+          this.player = ref;
+        }}
+        // @ts-ignore
+        onBuffer={this.onBuffer}
         style={styles.backgroundVideo}
+        // @ts-ignore
         onError={(error: any) => {
           console.log("Video error:", error);
           if (error.error) {
             console.log("Detailed error:", error.error);
           }
         }}
-        onLoad={(load) => console.log("Video loaded:", load)}
-      />
-
+        // onLoad={(load) => console.log("Video loaded:", load)}
+      /> */}
+      {/* <IVSPlayer streamUrl={ivsPlayBackUrl} />; */}
       <PlayerView
         style={styles.backgroundVideo}
         ref={(e: any) => {
@@ -73,15 +69,14 @@ const VideoPlayer = () => {
       <Button
         onPress={() => {
           // @ts-ignore
-          this.player.load("<SOME_HLS_URL>");
+          this.player.load(ivsPlayBackUrl);
         }}
         title="Play Me"
       />
-
-      <View style={[{ flexDirection: "row", backgroundColor: "black" }]}>
+      {/* <View style={[{ flexDirection: "row", backgroundColor: "black" }]}>
         <Button title="Start" onPress={StartVideo} />
         <Button title="Stop" onPress={StopVideo} />
-      </View>
+      </View> */}
     </View>
   );
 };
